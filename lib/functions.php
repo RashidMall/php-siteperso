@@ -10,10 +10,15 @@ function getContent(){
 	if(!isset($_GET['page'])){
 		include __DIR__.'/../pages/home.php';
 	} else {
-		// le reste du code
+		include __DIR__.'/../pages/'.$_GET['page'].'.php';
 	}
 }
 
 function getPart($name){
 	include __DIR__ . '/../parts/'. $name . '.php';
+}
+
+function getUserData(){
+	$myjson = file_get_contents('../data/user.json');
+	return json_decode($myjson, true);
 }
